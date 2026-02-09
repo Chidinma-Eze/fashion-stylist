@@ -4,13 +4,14 @@ import Image from 'next/image'
 import React from 'react'
 
 export default function HitCard({ hit, onSelect }) {
+  if (!hit?.image) return null;
   return (
     <div
       className="bg-white rounded-lg shadow-sm overflow-hidden cursor-pointer hover:shadow-md transition p-3"
       onClick={() => onSelect(hit.objectID)}
     >
       <div className="w-full h-40 relative mb-3">
-        <Image src={hit.image} alt={hit.name} fill style={{ objectFit: 'cover' }} />
+        <image src={hit.image || "/denimshirt.jpeg"} alt={hit.title || "image"} width={400} height={300} className="object-cover" ></image>
       </div>
 
       <div>

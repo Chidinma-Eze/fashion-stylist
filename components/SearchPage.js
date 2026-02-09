@@ -27,7 +27,7 @@ export default function SearchPage() {
   }
 
   return (
-    <InstantSearch searchClient={searchClient} indexName="fashion_items">
+    <InstantSearch searchClient={searchClient} indexName={process.env.NEXT_PUBLIC_ALGOLIA_INDEX_NAME}>
       <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
         {/* Sidebar - Filters */}
         <div className="lg:col-span-1">
