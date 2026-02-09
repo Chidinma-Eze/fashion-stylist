@@ -1,47 +1,47 @@
 [
   {
     "objectID": "1",
-    "name": "Cropped Denim Jacket",
+    "name": "Denim Shirt",
     "category": "tops",
     "color": "blue",
-    "price": 79,
-    "image": "/images/item-1.svg",
+    "price": 65,
+    "image": "/images/denim- shirt.jpeg",
     "pair_with": [3,5]
   },
   {
     "objectID": "2",
-    "name": "White Linen Shirt",
+    "name": "White Oversized Tee",
     "category": "tops",
     "color": "white",
-    "price": 59,
-    "image": "/images/item-2.svg",
+    "price": 39,
+    "image": "/images/white -oversized- tee.jpeg",
     "pair_with": [4,6]
   },
   {
     "objectID": "3",
-    "name": "Black Skinny Jeans",
+    "name": "High-Waist Blue Jeans",
     "category": "bottoms",
-    "color": "black",
-    "price": 89,
-    "image": "/images/item-3.svg",
+    "color": "blue",
+    "price": 79,
+    "image": "/images/high-waist -blue -jeans.jpeg",
     "pair_with": [1,7]
   },
   {
     "objectID": "4",
-    "name": "Khaki Chinos",
+    "name": "Beige Tailored Pants",
     "category": "bottoms",
-    "color": "khaki",
-    "price": 69,
-    "image": "/images/item-4.svg",
+    "color": "beige",
+    "price": 85,
+    "image": "/images/beige- tailored- pants.jpeg",
     "pair_with": [2,8]
   },
   {
     "objectID": "5",
-    "name": "Suede Ankle Boots",
+    "name": "Brown Leather Loafers",
     "category": "shoes",
     "color": "brown",
-    "price": 129,
-    "image": "/images/item-5.svg",
+    "price": 119,
+    "image": "/images/brown -leather -loafers.jpeg",
     "pair_with": [1,3]
   },
   {
@@ -49,44 +49,161 @@
     "name": "White Sneakers",
     "category": "shoes",
     "color": "white",
-    "price": 95,
-    "image": "/images/item-6.svg",
+    "price": 89,
+    "image": "/images/white- sneakers.jpeg",
     "pair_with": [2,4]
   },
   {
     "objectID": "7",
-    "name": "Striped Maxi Skirt",
+    "name": "Denim Mini Skirt",
     "category": "bottoms",
-    "color": "navy",
-    "price": 74,
-    "image": "/images/item-7.svg",
+    "color": "blue",
+    "price": 59,
+    "image": "/images/denim -mini -skirt.jpeg",
     "pair_with": [1,9]
   },
   {
     "objectID": "8",
-    "name": "Silk Scarf",
+    "name": "Leather Belt",
     "category": "accessories",
-    "color": "red",
-    "price": 39,
-    "image": "/images/item-8.svg",
+    "color": "brown",
+    "price": 49,
+    "image": "/images/leather -belt.jpeg",
     "pair_with": [2,7]
   },
   {
     "objectID": "9",
-    "name": "Aviator Sunglasses",
+    "name": "Black Sunglasses",
     "category": "accessories",
-    "color": "gold",
-    "price": 149,
-    "image": "/images/item-9.svg",
+    "color": "black",
+    "price": 129,
+    "image": "/images/Black- Sunglassses.jpeg",
     "pair_with": [5,6]
   },
   {
     "objectID": "10",
-    "name": "Wool Beanie",
+    "name": "Gold Chain Necklace",
     "category": "accessories",
-    "color": "gray",
-    "price": 24,
-    "image": "/images/item-10.svg",
+    "color": "gold",
+    "price": 59,
+    "image": "/images/gold- chain- necklase.jpeg",
     "pair_with": [3,8]
+  },
+  {
+    "objectID": "11",
+    "name": "Black Crop Top",
+    "category": "tops",
+    "color": "black",
+    "price": 45,
+    "image": "/images/black- crop- top.jpeg",
+    "pair_with": [3,12]
+  },
+  {
+    "objectID": "12",
+    "name": "Black Cargo Pants",
+    "category": "bottoms",
+    "color": "black",
+    "price": 75,
+    "image": "/images/black -cargo -pants.jpeg",
+    "pair_with": [11,15]
+  },
+  {
+    "objectID": "13",
+    "name": "Black Pleated Skirt",
+    "category": "bottoms",
+    "color": "black",
+    "price": 65,
+    "image": "/images/Black -Pleated- Skirt.jpeg",
+    "pair_with": [11,16]
+  },
+  {
+    "objectID": "14",
+    "name": "Black Chunky Sneakers",
+    "category": "shoes",
+    "color": "black",
+    "price": 99,
+    "image": "/images/black- chunky- sneakers.jpeg",
+    "pair_with": [12,13]
+  },
+  {
+    "objectID": "15",
+    "name": "Black Mini Handbag",
+    "category": "accessories",
+    "color": "black",
+    "price": 89,
+    "image": "/images/black- mini -handbag.jpeg",
+    "pair_with": [11,12]
+  },
+  {
+    "objectID": "16",
+    "name": "Black Turtleneck",
+    "category": "tops",
+    "color": "black",
+    "price": 55,
+    "image": "/images/Black- Turtleneck.jpeg",
+    "pair_with": [13,14]
+  },
+  {
+    "objectID": "17",
+    "name": "Beige Knit Top",
+    "category": "tops",
+    "color": "beige",
+    "price": 65,
+    "image": "/images/beige -knit- top.jpeg",
+    "pair_with": [4,18]
+  },
+  {
+    "objectID": "18",
+    "name": "Beige Heeled Sandals",
+    "category": "shoes",
+    "color": "beige",
+    "price": 109,
+    "image": "/images/beige-heeled -sandals.jpeg",
+    "pair_with": [17,4]
+  },
+  {
+    "objectID": "19",
+    "name": "Brown Long Sleeve Tee",
+    "category": "tops",
+    "color": "brown",
+    "price": 42,
+    "image": "/images/brown -long -sleeve -tee.jpeg",
+    "pair_with": [3,5]
+  },
+  {
+    "objectID": "20",
+    "name": "Main Item",
+    "category": "tops",
+    "color": "mixed",
+    "price": 69,
+    "image": "/images/main-item.jpg.jpeg",
+    "pair_with": [1,2]
+  },
+  {
+    "objectID": "21",
+    "name": "Item 1",
+    "category": "tops",
+    "color": "mixed",
+    "price": 49,
+    "image": "/images/item1.jpg.jpeg",
+    "pair_with": [2,3]
+  },
+  {
+    "objectID": "22",
+    "name": "Item 2",
+    "category": "bottoms",
+    "color": "mixed",
+    "price": 59,
+    "image": "/images/item2.jpg.jpeg",
+    "pair_with": [1,4]
+  },
+  {
+    "objectID": "23",
+    "name": "Item 3",
+    "category": "shoes",
+    "color": "mixed",
+    "price": 79,
+    "image": "/images/item-3.jpg.jpeg",
+    "pair_with": [2,5]
   }
 ]
