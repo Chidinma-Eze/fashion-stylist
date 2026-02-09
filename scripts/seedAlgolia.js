@@ -15,7 +15,17 @@ async function main() {
   const client = algoliasearch(appId, adminKey)
   const index = client.initIndex(indexName)
 
-  const dataPath = path.join(__dirname, '..', 'data', 'fashion-items.json')
+  // support either filename: fashion-items.json or fashion_items.json
+  const candidates = ['fashion-items.json', 'fashion_items.json']
+  const dataPath = candidates
+    .map(f => path.join(__dirname, '..', 'data', f))
+    .find(p => fs.existsSync(p))
+
+  if (!dataPath) {
+    console.error('No data file found. Put fashion_items.json or fashion-items.json in the data/ folder.')
+    process.exit(1)
+  }
+
   const raw = fs.readFileSync(dataPath, 'utf8')
   const records = JSON.parse(raw)
 

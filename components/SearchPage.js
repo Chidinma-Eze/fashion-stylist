@@ -1,92 +1,94 @@
 'use client'
 
 import React, { useState } from 'react'
-import algoliasearch from 'algoliasearch'
-import {
-  InstantSearch,
-  SearchBox,
-  RefinementList,
-  SortBy,
-  useHits
-} from 'react-instantsearch-hooks-web'
+import { InstantSearch, SearchBox, Hits, RefinementList } from 'react-instantsearch-hooks-web'
+import { algoliaClient } from '../lib/algolia'
 import HitCard from './HitCard'
 import SelectedItemCard from './SelectedItemCard'
-import data from '../data/fashion-items.json'
+import data from '../data/fashion_items.json'
 
-const searchClient = algoliasearch(
-  process.env.NEXT_PUBLIC_ALGOLIA_APP_ID || '',
-  process.env.NEXT_PUBLIC_ALGOLIA_SEARCH_KEY || ''
-)
+const searchClient = algoliaClient
 
-function HitsGrid({ onSelect }) {
-  const { hits } = useHits()
-  if (!hits || hits.length === 0) {
-    return (
-      <div className="py-12 text-center text-gray-600">
-        <p className="text-xl">No results found.</p>
-        <p className="mt-2">Try adjusting filters or search terms.</p>
-      </div>
-    )
+export default function SearchPage() {
+  const [selectedItemId, setSelectedItemId] = useState(null)
+  const [filters, setFilters] = useState({})
+
+  // Find selected item from data
+  const selectedItem = selectedItemId
+    ? data.find(item => String(item.objectID) === String(selectedItemId))
+    : null
+
+  const handleSelectItem = (objectID) => {
+    setSelectedItemId(objectID)
+  }
+
+  const handleClearSelection = () => {
+    setSelectedItemId(null)
   }
 
   return (
-    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
-      {hits.map(hit => (
-        <HitCard key={hit.objectID} hit={hit} onSelect={onSelect} />
-      ))}
-    </div>
-  )
-}
-
-export default function SearchPage() {
-  const indexName = process.env.NEXT_PUBLIC_ALGOLIA_INDEX_NAME || 'fashion_items'
-  const [selectedId, setSelectedId] = useState(null)
-
-  const selectedItem = data.find(i => i.objectID === String(selectedId)) || null
-
-  return (
-    <InstantSearch searchClient={searchClient} indexName={indexName}>
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-        <aside className="lg:col-span-1">
-          <div className="sticky top-6">
-            <div className="mb-4">
-              <SearchBox placeholder="Search items, colors, categories..." />
-            </div>
+    <InstantSearch searchClient={searchClient} indexName="fashion_items">
+      <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
+        {/* Sidebar - Filters */}
+        <div className="lg:col-span-1">
+          <div className="bg-white rounded-lg shadow-sm p-4 sticky top-4">
+            <h2 className="font-semibold mb-4">Filters</h2>
 
             <div className="mb-6">
-              <h3 className="font-semibold mb-2">Category</h3>
+              <h3 className="text-sm font-medium mb-3">Category</h3>
               <RefinementList attribute="category" />
             </div>
 
             <div className="mb-6">
-              <h3 className="font-semibold mb-2">Color</h3>
+              <h3 className="text-sm font-medium mb-3">Color</h3>
               <RefinementList attribute="color" />
             </div>
+          </div>
+        </div>
 
-            <div className="mb-6">
-              <h3 className="font-semibold mb-2">Sort</h3>
-              <SortBy
-                items={[
-                  { value: indexName, label: 'Relevance' },
-                  { value: `${indexName}_price_asc`, label: 'Price ↑' },
-                  { value: `${indexName}_price_desc`, label: 'Price ↓' }
-                ]}
-              />
+        {/* Main content */}
+        <div className="lg:col-span-3">
+          {/* Search bar */}
+          <div className="mb-6">
+            <SearchBox
+              placeholder="Search fashion items..."
+              className="w-full"
+              classNames={{
+                root: 'w-full',
+                form: 'relative w-full',
+                input:
+                  'w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500',
+                submit: 'absolute right-3 top-2.5 text-gray-400',
+              }}
+            />
+          </div>
+
+          {/* Two column layout */}
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            {/* Search Results - Left/Top */}
+            <div className="lg:col-span-2">
+              <div className="bg-white rounded-lg shadow-sm p-4">
+                <h2 className="font-semibold mb-4">Results</h2>
+                <Hits
+                  hitComponent={({ hit }) => (
+                    <div onClick={() => handleSelectItem(hit.objectID)}>
+                      <HitCard hit={hit} onSelect={handleSelectItem} />
+                    </div>
+                  )}
+                  classNames={{
+                    root: 'grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4',
+                    list: 'contents',
+                  }}
+                />
+              </div>
+            </div>
+
+            {/* Selected Item Details - Right/Bottom */}
+            <div className="lg:col-span-1">
+              <SelectedItemCard item={selectedItem} onSelect={handleSelectItem} />
             </div>
           </div>
-        </aside>
-
-        <section className="lg:col-span-2">
-          <div className="mb-6">
-            <h2 className="text-xl font-semibold">Search results</h2>
-          </div>
-
-          <HitsGrid onSelect={id => setSelectedId(id)} />
-
-          <div className="mt-8">
-            <SelectedItemCard item={selectedItem} onSelect={id => setSelectedId(id)} />
-          </div>
-        </section>
+        </div>
       </div>
     </InstantSearch>
   )
